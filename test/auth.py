@@ -42,35 +42,35 @@ class AuthTest(webtest.TestCase):
 
     def testLogin(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         auth.login(self.usr, self.passwd)
         assert ses.usr == self.usr
 
     def testLoginNotExists(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         ok = True
         try:
             auth.login('noman', 'weakpass')
-        except web.auth.UserNotFound:
+        except webmod.auth.UserNotFound:
             ok = False
         assert not ok
         assert (not 'usr' is ses) or (ses.usr is None)
 
     def testLoginWrongPasswd(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         ok = True
         try:
             auth.login(self.usr, 'weakpass')
-        except web.auth.WrongPassword:
+        except webmod.auth.WrongPassword:
             ok = False
         assert not ok
         assert (not 'usr' is ses) or (ses.usr is None)
 
     def testLogout(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         auth.login(self.usr, self.passwd)
         auth.logout()
         assert not ses.usr
@@ -93,7 +93,7 @@ class AuthTest(webtest.TestCase):
 
     def testHasRole(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         auth.login(self.usr, self.passwd)
         assert auth.hasrole(self.role)
         assert auth.hasrole(self.role, 'user')
@@ -101,13 +101,13 @@ class AuthTest(webtest.TestCase):
 
     def testGetRole(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         auth.login(self.usr, self.passwd)
         assert auth.getrole() == self.role
 
     def testGetRow(self):
         ses = self.make_session(self.app)
-        auth = web.auth.Auth(ses, self.db)
+        auth = webmod.auth.Auth(ses, self.db)
         row = auth._getrow(self.usr)
         assert self.usr == row.usr
 
@@ -143,12 +143,12 @@ class BcryptCryptTest(CryptTest):
     crypted = '$2a$10$tMS/VsupzEbw1qcHAhRzoeRaqO08seOY9YhxMtZOWwuHaF9.btfNy'
 
     def testEncrypt(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         crypted = crypt[self.alg].encrypt(self.passwd)
         assert len(crypted) == 60
 
     def testCompare(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         match = crypt[self.alg].compare(self.passwd, self.crypted)
         assert match
 
@@ -161,18 +161,18 @@ class SHA256SaltCryptTest(CryptTest):
     salt = '976b7778d6afa81f5b2952af11d3e36c2c4591d9674ef0d3fd9a8491ed211f4a'
 
     def testEncrypt(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         crypted = crypt[self.alg].encrypt(self.passwd)
         assert len(crypted) == 129
         assert crypted.find('$')
 
     def testEncryptSalt(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         crypted = crypt[self.alg].encrypt(self.passwd, self.salt)
         assert crypted == self.crypted
 
     def testCompare(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         match = crypt[self.alg].compare(self.passwd, self.crypted)
         assert match
 
@@ -181,11 +181,11 @@ class UnknownAlgCryptTest(CryptTest):
     alg = 'idontexist'
 
     def testEncrypt(self):
-        crypt = web.auth.Crypt()
+        crypt = webmod.auth.Crypt()
         raised = False
         try:
             crypt[self.alg].encrypt(self.passwd)
-        except web.auth.UnknownCryptAlgorithm:
+        except webmod.auth.UnknownCryptAlgorithm:
             raised = True
         assert raised
 

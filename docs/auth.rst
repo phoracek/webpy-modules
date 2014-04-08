@@ -68,7 +68,7 @@ exception.
         try:
             auth.login(usr, passwd)
             raise web.seeother('/private')
-        except web.auth.UserNotFound, web.auth.WrongPassword:
+        except webmod.auth.UserNotFound, webmod.auth.WrongPassword:
             return render.login()
 
 *Hint: It's still possible to return to a login form with browser's back button

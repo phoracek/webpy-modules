@@ -1,4 +1,4 @@
-webpy-modules
+web.py modules
 =============
 
-Extensions for web.py framework.
+Optional extensions for web.py framework.

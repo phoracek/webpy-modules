@@ -23,5 +23,3 @@ To run all tests in a class:
 To run a single test:
 
     $ python test/auth.py AuthTest.testLogin
-
-

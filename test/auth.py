@@ -1,6 +1,13 @@
+"""
+    Authentication and authorization tools test
+    (for web.py modules)
+"""
 import tempfile
 import web
 import webtest
+
+import webmod
+from webmod import auth
 
 
 class AuthTest(webtest.TestCase):
@@ -14,7 +21,7 @@ class AuthTest(webtest.TestCase):
     role = 'admin'
 
     def setUp(self):
-        web.config.auth.crypt = self.crypt
+        webmod.config.auth.crypt = self.crypt
         self.app = web.auto_application()
         try:
             self.remove_database()
@@ -26,8 +33,8 @@ class AuthTest(webtest.TestCase):
         self.remove_database()
 
     def make_session(self, app):
-        dir = tempfile.mkdtemp()
-        store = web.session.DiskStore(dir)
+        sdir = tempfile.mkdtemp()
+        store = web.session.DiskStore(sdir)
         return web.session.Session(app, store)
 
     def make_database(self):

@@ -1,12 +1,15 @@
-"""webtest: test utilities.
+"""
+    webtest utilities
+    (part of web.py modules)
 """
 import sys, os
 
 # adding current directory to path to make sure local modules can be imported
 sys.path.insert(0, '.')
 
-from web.test import *
+from testutils import *
     
+
 def setup_database(dbname, driver=None, pooling=False):
     if dbname == 'sqlite':
         db = web.database(dbn=dbname, db='webpy.db', pooling=pooling, driver=driver)

@@ -17,6 +17,9 @@ case when you have not the right permissions, if it is not defined,
 `web.forbidden()` is raised.    
 
 .. code:: python
+    
+    import webmod
+    from webmod import auth
 
     db = web.database(...)
     session = web.session.Session(...)

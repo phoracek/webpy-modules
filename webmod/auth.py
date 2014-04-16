@@ -4,8 +4,8 @@
 """
 import hashlib
 import os
-import utils
-import webapi as web
+import web
+import webmod
 
 try:
     import bcrypt
@@ -17,7 +17,7 @@ __all__ = [
     "UnknownCryptAlgorithm", "UserNotFound", "WrongPassword", "LogoutError"
 ]
 
-web.config.auth = utils.storage({
+webmod.config.auth = webmod.utils.storage({
     # database settings
     'table_name': 'users',
     'user_column': 'usr',
@@ -33,7 +33,6 @@ web.config.auth = utils.storage({
 class UnknownCryptAlgorithm(Exception):
     """raised for unsupported password crypt algorithms"""
     pass
-
 
 class UserNotFound(Exception):
     """raised when the user is not found in the database"""
@@ -60,7 +59,7 @@ class Auth(object):
         self._db = db
         self._lgn_pg = lgn_pg
 
-        self._config = utils.storage(web.config.auth)
+        self._config = webmod.utils.storage(webmod.config.auth)
         self._db.user = None
         self._crypt = Crypt()
 
@@ -121,7 +120,7 @@ class Auth(object):
 
 
 class Crypt:
-    _config = utils.storage(web.config.auth)
+    _config = webmod.utils.storage(webmod.config.auth)
 
     def __getitem__(self, key):
         if key == 'bcrypt':
@@ -166,8 +165,3 @@ class Crypt:
             plain_crypted = Crypt.SHA256Salt.encrypt(plain, salt)
             match = plain_crypted == crypted
             return match
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

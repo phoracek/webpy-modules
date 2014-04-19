@@ -7,7 +7,7 @@ setup(
     author='Petr Horacek',
     author_email='p.horacek94@gmail.com',
     url='https://github.com/PetrHoracek/webpy-modules',
-    download_url = 'https://github.com/PetrHoracek/webpy-modules/archive/0.1.tar.gz',
+    download_url = 'https://github.com/PetrHoracek/webpy-modules/archive/v0.1.tar.gz',
     license='MIT License',
     description='Optional modules for web.py framework.',
     long_description=open('README.rst').read(),

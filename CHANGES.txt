@@ -1,12 +1,12 @@
 # web.py modules changelog
 
-## 2014-04-18 0.1
+## 2014-04-18 v0.1
 
 * Basic structure
 * Documentation
 * Auth module
 
 
-## 2014-04-10 0.0.1
+## 2014-04-10 v0.0.1
 
 * Initial release

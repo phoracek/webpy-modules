@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='web.py-modules',
     packages=['webmod', 'test'],
-    version='0.1',
+    version='v0.1',
     author='Petr Horacek',
     author_email='p.horacek94@gmail.com',
     url='https://github.com/PetrHoracek/webpy-modules',

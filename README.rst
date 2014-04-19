@@ -16,7 +16,7 @@ or do it manualy:
 
 ::
 
-    wget https://github.com/PetrHoracek/webpy-modules/tarball/0.1
+    wget https://github.com/PetrHoracek/webpy-modules/archive/0.1.tar.gz
     tar -zxvf web.py-modules-0.1.tar.gz
     cd web.py-modules-0.1
     python setup.py install

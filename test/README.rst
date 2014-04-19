@@ -1,10 +1,13 @@
-# web.py modules unit tests
+web.py modules unit tests
+=========================
 
-## Setup
+Setup
+-----
 
 All databases expect a database with name ``webpy`` with username ``scott`` and password ``tiger``.
 
-## Running all tests
+Running all tests
+-----------------
 
 To run all tests:
 
@@ -12,7 +15,8 @@ To run all tests:
 
     $ python test/alltests.py
 
-## Running individual tests
+Running individual tests
+------------------------
 
 To run all tests in a file:
 

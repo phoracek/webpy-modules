@@ -1,5 +1,5 @@
 web.py modules
-=============
+==============
 
 Optional extensions for web.py framework.
 
@@ -16,7 +16,7 @@ or do it manualy:
 
 ::
 
-    wget http://pypi.python.org/packages/source/p/pip/web.py-modules-0.1.tar.gz
+    wget https://github.com/PetrHoracek/webpy-modules/tarball/0.1
     tar -zxvf web.py-modules-0.1.tar.gz
     cd web.py-modules-0.1
     python setup.py install
@@ -38,6 +38,4 @@ Of course it's dependent on web.py package.
 
 You can find details in docs.
 
-Auth
-````
-Auth module handles basic requirements for users and access rights management. 
+- ``auth`` - handles basic requirements for users and access rights management. 

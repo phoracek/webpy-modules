@@ -7,7 +7,7 @@ import web
 import webtest
 
 import webmod
-from webmod import auth
+from webmod import auth as _
 
 
 class AuthTest(webtest.TestCase):
@@ -62,7 +62,7 @@ class AuthTest(webtest.TestCase):
         except webmod.auth.UserNotFound:
             ok = False
         assert not ok
-        assert (not 'usr' is ses) or (ses.usr is None)
+        assert ('usr' is not ses) or (ses.usr is None)
 
     def testLoginWrongPasswd(self):
         ses = self.make_session(self.app)
@@ -73,7 +73,7 @@ class AuthTest(webtest.TestCase):
         except webmod.auth.WrongPassword:
             ok = False
         assert not ok
-        assert (not 'usr' is ses) or (ses.usr is None)
+        assert ('usr' is not ses) or (ses.usr is None)
 
     def testLogout(self):
         ses = self.make_session(self.app)
@@ -83,19 +83,19 @@ class AuthTest(webtest.TestCase):
         assert not ses.usr
 
     def testRole(self):
-        #TODO: decorator test
+        # TODO: decorator test
         pass
 
     def testRoleNotLogged(self):
-        #TODO: decorator test
+        # TODO: decorator test
         pass
 
     def testRoleWrongRole(self):
-        #TODO: decorator test
+        # TODO: decorator test
         pass
 
     def testRoleWrongRoleLoginPage(self):
-        #TODO: decorator test
+        # TODO: decorator test
         pass
 
     def testHasRole(self):

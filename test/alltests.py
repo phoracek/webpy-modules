@@ -3,6 +3,7 @@
 """
 import webtest
 
+
 def suite():
     modules = ["doctests", "auth"]
     return webtest.suite(modules)

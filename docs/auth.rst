@@ -14,10 +14,10 @@ object with `webmod.auth.Auth()`. It has all methods you need for authentication
 and authorization. Object requires parameters `session` and `database`.
 Optionaly attribute `lgn_pg` defines the URL on which is made redirection in
 case when you have not the right permissions, if it is not defined,
-`web.forbidden()` is raised.    
+`web.forbidden()` is raised.
 
 .. code:: python
-    
+
     import webmod
     from webmod import auth
 
@@ -51,20 +51,20 @@ Authorization – login
 Authorization is carried out via a simple form. It may looks like this:
 
 ::
-    
+
     <form action="/login" method="POST">
     <input type="text" name="usr" placeHolder="Username" /><br />
     <input type="password" name="passwd" placeHolder="Password" /><br />
     <input type="submit" value="Log in" />
     </form>
-    
+
 
 Submited form is then processed by function `login`. In case of wrong password
 or non-existing user function returns *WrongPassword* or *UserNotFound*
 exception.
 
 .. code:: python
-    
+
     def POST(self):
         usr = web.input().usr
         passwd = web.input().passwd
@@ -86,13 +86,13 @@ following:*
         if auth.getrole(): # if already logged, see other
             raise web.seeother('/')
         else:
-            return render.login()    
+            return render.login()
 
 
 For log out from Auth object use `logout()` function:
 
 .. code:: python
-    
+
     def GET(self):
         auth.logout()
 
@@ -109,7 +109,7 @@ allowed roles, just add `@role(role1, role2,...)` before the `GET` or `POST`
 method.
 
 .. code:: python
-    
+
     @auth.role('admin')
     def GET(self):
         return render.text("Admin's page")
@@ -121,7 +121,7 @@ Another rights checking method is `hasrole`. It returns `True` if logged user
 has one of listed roles.
 
 .. code:: python
-    
+
     >>> auth.hasrole('user', 'admin')
     True
 
@@ -131,7 +131,7 @@ Method `getrole` returns logged user's role. If there is no logged user,
 returns `None`.
 
 .. code:: python
-    
+
     >>> auth.getrole()
     'admin'
 
@@ -153,10 +153,10 @@ pip). You must reserve at least 60 chars long VARCHAR or BINARY column in
 database.
 
 By default it uses standard algorithm defined in configuration, if you want to
-use another one, you must define it as key. 
+use another one, you must define it as key.
 
 .. code:: python
-    
+
     crypt = auth.Crypt()
 
     >>> crypt.encrypt("tiger") # encrypt with default sha256 alg
@@ -180,7 +180,7 @@ Additional settings
 Default Auth settings is stored in `web.config.auth`.
 
 .. code:: python
-    
+
     web.config.auth = utils.storage({
         # database settings
         'table_name': 'users',
@@ -196,5 +196,5 @@ Default Auth settings is stored in `web.config.auth`.
 You can change default options in the beginning of the application.
 
 .. code:: python
-    
+
     web.config.auth.crypt = 'bcrypt'

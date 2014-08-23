@@ -34,6 +34,7 @@ class UnknownCryptAlgorithm(Exception):
     """raised for unsupported password crypt algorithms"""
     pass
 
+
 class UserNotFound(Exception):
     """raised when the user is not found in the database"""
     pass
@@ -107,7 +108,7 @@ class Auth(object):
             user = self._ses.usr
             row = self._getrow(user)
             return row.role
-        except AttributeError as e:
+        except AttributeError:
             return None
 
     def _getrow(self, usr):
@@ -115,7 +116,7 @@ class Auth(object):
                               limit=1, vars={'usr': usr})
         try:
             return row[0]
-        except IndexError as e:
+        except IndexError:
             return None
 
 

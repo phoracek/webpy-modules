@@ -9,7 +9,7 @@ Install
 Use pip:
 
 ::
-    
+
     pip install web.py-modules
 
 or do it manualy:
@@ -20,7 +20,7 @@ or do it manualy:
     tar -zxvf web.py-modules-v0.1.tar.gz
     cd web.py-modules-v0.1
     python setup.py install
-    
+
 or just download package and paste ``webmod`` folder into your project.
 
 
@@ -38,4 +38,4 @@ Of course it's dependent on web.py package.
 
 You can find details in docs.
 
-- ``auth`` - handles basic requirements for users and access rights management. 
+- ``auth`` - handles basic requirements for users and access rights management.

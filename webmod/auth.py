@@ -140,12 +140,13 @@ class Crypt:
         @staticmethod
         def encrypt(passwd):
             salt = bcrypt.gensalt(Crypt._config.bcrypt_loops)
-            crypted = bcrypt.hashpw(passwd, salt)
+            crypted = bcrypt.hashpw(passwd.encode('utf-8'), salt)
             return crypted
 
         @staticmethod
         def compare(plain, crypted):
-            plain_crypted = bcrypt.hashpw(plain, crypted)
+            plain_crypted = bcrypt.hashpw(plain.encode('utf-8'),
+                                          crypted.encode('utf-8'))
             match = plain_crypted == crypted
             return match
 

@@ -16,9 +16,9 @@ or do it manualy:
 
 ::
 
-    wget https://github.com/PetrHoracek/webpy-modules/archive/v0.1.tar.gz
-    tar -zxvf web.py-modules-v0.1.tar.gz
-    cd web.py-modules-v0.1
+    wget https://github.com/PetrHoracek/webpy-modules/archive/v0.1.1.tar.gz
+    tar -zxvf web.py-modules-v0.1.1.tar.gz
+    cd web.py-modules-v0.1.1
     python setup.py install
 
 or just download package and paste ``webmod`` folder into your project.

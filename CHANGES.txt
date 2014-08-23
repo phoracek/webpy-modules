@@ -1,5 +1,11 @@
 # web.py modules changelog
 
+## 2014-08-23 v0.1.1
+
+* bcrypt utf-8 encode bug #1 solved
+* pep8, unused imports, variables,... code improved #2
+
+
 ## 2014-04-18 v0.1
 
 * Basic structure
